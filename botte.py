@@ -14,7 +14,47 @@ Takeaways from AlphaGo Zero:
     where z is the game's outcome, v is the value predicted by the network, pi is the MCTS output, and c is a regularization parameter.
 
 Define state s of pokemon battle:
+- move data:
+    - move name
+    - move type
+    - move category
+    - move power
+    - move accuracy
+    - move priority
+    - move target
+    - move pp
+    - move max pp
 
+- pokemon data:
+    - species
+    - level
+    - current HP
+    - status
+    - stats
+    - stats modifiers
+    - moves
+        - for each move (x4):
+            - move data
+    - item
+    - ability
+    - types
+    - weight
+
+- field data:
+    - weather
+    - terrain
+    - hazards
+    - screens
+    - tailwind
+    - room
+
+- player data:
+    - active pokemon
+    - team
+        - for each pokemon (x6):
+            - pokemon data
+
+...too complicated!
 """
 
 import asyncio
