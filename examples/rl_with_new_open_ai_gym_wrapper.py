@@ -3,19 +3,19 @@ import asyncio
 import numpy as np
 from gymnasium.spaces import Box, Space
 from gymnasium.utils.env_checker import check_env
-from rl.agents.dqn import DQNAgent
-from rl.memory import SequentialMemory
-from rl.policy import EpsGreedyQPolicy, LinearAnnealedPolicy
+#from rl.agents.dqn import DQNAgent
+#from rl.memory import SequentialMemory
+#from rl.policy import EpsGreedyQPolicy, LinearAnnealedPolicy
 from tabulate import tabulate
-from tensorflow.keras.layers import Dense, Flatten
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.optimizers import Adam
+#from tensorflow.keras.layers import Dense, Flatten
+#from tensorflow.keras.models import Sequential
+#from tensorflow.keras.optimizers import Adam
 
 from poke_env.environment.abstract_battle import AbstractBattle
 from poke_env.player import (
     Gen8EnvSinglePlayer,
     MaxBasePowerPlayer,
-    ObservationType,
+    ObsType,
     RandomPlayer,
     SimpleHeuristicsPlayer,
     background_cross_evaluate,
@@ -29,7 +29,7 @@ class SimpleRLPlayer(Gen8EnvSinglePlayer):
             current_battle, fainted_value=2.0, hp_value=1.0, victory_value=30.0
         )
 
-    def embed_battle(self, battle: AbstractBattle) -> ObservationType:
+    def embed_battle(self, battle: AbstractBattle) -> ObsType:
         # -1 indicates that the move does not have a base power
         # or is not available
         moves_base_power = -np.ones(4)
@@ -89,7 +89,7 @@ async def main():
     eval_env = SimpleRLPlayer(
         battle_format="gen8randombattle", opponent=opponent, start_challenging=True
     )
-
+    """
     # Compute dimensions
     n_action = train_env.action_space.n
     input_shape = (1,) + train_env.observation_space.shape
@@ -177,6 +177,7 @@ async def main():
     print("Cross evaluation of DQN with baselines:")
     print(tabulate(table))
     eval_env.close()
+    """
 
 
 if __name__ == "__main__":

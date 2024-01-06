@@ -7,7 +7,7 @@ from poke_env.player import Player, RandomPlayer, cross_evaluate
 
 class MaxDamagePlayer(Player):
     def choose_move(self, battle):
-        # If the player can attack, it will
+        # If the player can attack, it willall
         if battle.available_moves:
             # Finds the best move among available ones
             best_move = max(battle.available_moves, key=lambda move: move.base_power)
